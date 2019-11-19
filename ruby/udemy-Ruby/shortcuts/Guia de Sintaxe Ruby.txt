@@ -1,0 +1,93 @@
+	é um analisador de coidgo rUby que pretende com que todo codigo ruby
+tenha uma forma padrao e tudo masi. O RubyMine o usa, por conta disso ele
+pode ser chato com algumas coisas
+	
+	Aqui deixarei os problemas e soluçoes de usar a sintaxe
+
+Dicas Rapidas
+	0.1 as varaiaveis que sao array devem terminar com um s como plural
+	0.2 coloque um comentraio do arquivo em cima da classe
+	0.3 use parentesis quando ha argumentos
+
+1. No topo da calsse, tem que ter um comentario com o nome de seu arquivo
+
+	#ruim pratica - nao por esse comentraio
+	
+	class Pearson
+
+	end
+
+	#boa pratica - por esse comentario
+	# pearson.rb
+	class Pearson
+
+	end
+
+	+ Vantangem: em Ruby a classe pode ter lettra miauscula ou minuscula
+	 Se nao fazer isso:
+		# Acusa Issso
+		Miss-top calss docmentation
+2. Ordem dos elementos internos de uma classe
+
+	class Person
+  # extend and include go first
+  extend SomeModule
+  include AnotherModule
+
+  # inner classes
+  CustomError = Class.new(StandardError)
+
+  # constants are next
+  SOME_CONSTANT = 20
+
+  # afterwards we have attribute macros
+  attr_reader :name
+
+  # followed by other macros (if any)
+  validates :name
+
+  # public class methods are next in line
+  def self.some_method
+  end
+
+  # initialization goes between class methods and other instance methods
+  def initialize
+  end
+
+  # followed by other public instance methods
+  def some_method
+  end
+
+  # protected and private methods are grouped near the end
+  protected
+
+  def some_protected_method
+  end
+
+  private
+
+  def some_private_method
+  end
+end
+
+3. Usamos Parametro quando ha algum parametro no metodo
+# bad
+def some_method()
+  # body omitted
+end
+
+# good
+def some_method
+  # body omitted
+end
+
+# bad
+def some_method_with_parameters param1, param2
+  # body omitted
+end
+
+# good
+def some_method_with_parameters(param1, param2)
+  # body omitted
+end
+	

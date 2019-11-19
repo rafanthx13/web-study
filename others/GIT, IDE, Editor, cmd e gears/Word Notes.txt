@@ -1,0 +1,3 @@
+####	Posicionar Figura
++ Clique com botao direto na imagem > Quebra de Text Automatica > Proxmio
+ - Ao deixar proximo, voce pode arrastar livremente a imagem pelo documento sem que a iamgem fique rígida e mal encaixada

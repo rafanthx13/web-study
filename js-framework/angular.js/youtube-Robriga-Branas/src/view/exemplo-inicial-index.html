@@ -1,0 +1,24 @@
+<!-- AngularJS - #1 - Introdução e Hello World - Rodrigo Branas -->
+<!DOCTYPE html>
+<html ng-app="helloWorld">
+<head>
+	<title>Hello World</title>
+	<script src="angular-1.7.2/angular.js"></script>
+	<script>
+		angular.module('helloWorld', []); // esse colchetes é apara aparacer outor modulo
+		// Criando o Controller
+		// posso usar var app = retorno do modeul
+		angular.module('helloWorld').controller('helloWorldController', function($scope){
+			$scope.message = "Hello The World";
+		});
+
+		
+	</script>
+</head>
+<!-- A view é a ingeçao de um controler, entao, em um mesmo html posso ter varios controller se quisermos -->
+<body ng-controller="helloWorldController">
+	{{message}} <!-- Quando se usa {{}} já ta implictio o $scope -->
+
+
+</body>
+</html>

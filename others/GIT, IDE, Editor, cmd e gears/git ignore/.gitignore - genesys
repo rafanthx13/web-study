@@ -1,0 +1,29 @@
+
+# IntelliJ project files
+/front/node_modules
+.idea
+/target
+*.iml
+out
+gen### Java template
+# Compiled class file
+*.class
+# Log file
+*.log
+# BlueJ files
+*.ctxt
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+# virtual machine crash logs
+hs_err_pid*
+#IDE'S
+.vscode/
+#SENHA DO BANCO DA APLICACAO
+back/base_spring/src/main/resources/application.properties

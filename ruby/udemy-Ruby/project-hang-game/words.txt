@@ -1,0 +1,4 @@
+baleia;animal marinho;muito grande;pesado
+abelha;inseto;pequeno;mel
+alemanha;europa;berlim;nazismo
+uberlandia;capital logistica;segunda maior de minas;UFU

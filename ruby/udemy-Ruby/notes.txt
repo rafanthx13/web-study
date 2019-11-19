@@ -1,0 +1,1401 @@
+  ___         __             _   __  __        _            _     
+ | _ \ __ _  / _| __ _  ___ | | |  \/  |      /_\   ___ ___(_) ___
+ |   // _` ||  _|/ _` |/ -_)| | | |\/| | _   / _ \ (_-<(_-<| |(_-<
+ |_|_\\__,_||_|  \__,_|\___||_| |_|  |_|(_) /_/ \_\/__//__/|_|/__/
+                                                                  
+			  ___        _          
+			 | _ \ _  _ | |__  _  _ 
+			 |   /| || || '_ \| || |
+			 |_|_\ \_,_||_.__/ \_, |
+					   |__/ 
+
+---------------------------------------------------------------------------------
+
+	{[Udemy - Ruby - OO - Jackson Pires]}
+	{[Begin - 19/11/2017 - Finish - 21/11/2017]}
+
+Windows e Linux
+	+ Difrença pra imprimir '\n'
+	print "Hi\n"   # For UNIX-like systems including Mac OS X.
+	print "Hi\r\n" # For Windows.
+		+ Sem isso, ele imprimi '\n' na tela, e nao queremos isso
+
+Dicas RubyMine
+	+ Alt + 1 = Fecha aba de Project
+	+ Desativei o RubyCop em Inspections > Ruby > RubyCop
+
+Comandos do Sublime
+	+ segurando Alt podemos selecionar multiplas linhas verticalmente
+	+ shrotcut do sublime
+http://docs.sublimetext.info/en/latest/reference/keyboard_shortcuts_win.html
+
+Colocar cmd para abir em pastas
+	+ Segura Shift + Botao direito na pasta
+	+ Assim abri o cmd na pasta e nao presisa dar cd
+	+ link : https://www.youtube.com/watch?v=YF7P1g_G-f4
+
+Comandos cmd:
+	+ > dir : lista arquivos da pasta
+	+ > cls : dar um clean no cmd
+	+ se clicar 'seta_pra_cima' executa o ultimo comdando feito no cmd
+	+ comandos do ruby : vc faz > ruby ..
+	  Link: https://www.tutorialspoint.com/ruby/ruby_command_line_options.htm
+	+ Podemos usar TAB para autocompletar de acordo com as opçoes
+
+Detalhes da Linguagem RUBY
+	+ Nao presisa de ';' igual a Python
+		O ";" eh usado para deixar em uma linha varias instruçoes
+	+ a extensao eh '.rb'
+	+ Em Ruby, tudo é classe
+	+ Comentarios : # (uma linha) =begin /code/ =end (nlinhas)
+	+ a. Parênteses são geralmente opcionais nas chamadas de métodos. 
+		Todas as chamadas abaixo são válidas:
+			foobar
+			foobar()
+			foobar(a, b, c)
+			foobar a, b, c
+	+ Case sensitive – Letras maiúsculas e minúsculas são distintas.
+	+ Sintaxe Sugar : aceita alguns desvio de sintaxe para que fique mais
+		legivel o codigo. Exemplo: o metodo 'atr=' é chamado como 'atr ='
+
+Detlhaes de Projeto Ruby
+	+ Gemfile, Gems e Bundler (detalahar)
+	+ estrutau, app.rb que é o arquivo principal que chama clase e  libs
+		da pasta lib
+		 A palavra chave end, por exemplo, é completamente diferente
+		 da palavra chave END.
+	+ o null em RUBY é nil
+
+
+Comandos do IRB:
+	+ Usamos semelhante ao itnerpretador
+	+ > exit : sai des modo irb
+	+ Usado para coisas simples super sequenciais
+	+ Ele mostra o que de fato esta acontecendo
+
+---------------------------------------------------------------------------------
+
+	{[(< Modulo 1 Historia e Introdução >)]}
+
+	[1.1. Intro]
+
+--> Ruby é interpretada, multiparadigma, tem garbageColetor (nao presisa
+	alocar a Memoria. Criada Por Yukiro Matsumoto (Matz)
+	no Japap de 1993 a 1995. é uma das poucas lingugane desenvolvida fora
+	do USA/Europa que ganhou sucesso mundial
+	+ Feito em C	+ Altamente Portável	+ Proposito Geral
+	+ OpenSource	+ Linguagem de Script (nao compila)
+	+ A linguagem é limpa e fácil, semelhante a nossa fala
+
+--> link : Site Oficial Ruby:
+	https://www.ruby-lang.org/pt/
+	
+	[1.2.  Instalaçao]
+
+--> Baixa ele no site oficial
+
+--> Abre ele no cmd PRÓPRIO DO RUby e execute os comandos pra ve se ta tudo certo
+	Temos que ter esses 3 pra funcionar tudo
+		> ruby -v
+		> gem  -v
+		> irb
+
+	[1.3. Linguagem Compilada/Interpretada]
+
+--> Linguagem compilada é aquela que depois de compilar tranforma em linguagem
+	de máquina, e vira código binário
+	+ O ruim é que a compilaçao é especifica para cada sistema operacional
+		nao tendo assim portatibilidadae
+	+ O bom é que ela aesconde, por isso é usada por empresasa
+
+--> Lingagem interpretada: Temos um código fonte que, somado ao interpretador
+	irá mostrar o que queremos.
+	+ Vantegame: Com isso, torna portátil, fico independente de SO
+		desde que haja interpretador para o SO
+
+	[1.4. IRB - REPL (terminal Interativo ) do Ruby]
+
+--> Read-Eval-Print Loop (REPL /'répou')
+	+ ´e um shell interativo que para interepretar enquanto agente escreve
+	+ O REPL em ruby é o IRB (Interactive Ruby)
+
+--> IRB 
+	+ Eh REPL do Ruby
+	+ basta executar > irb no cmd ou no shell do ruby
+	+ No irb todo comando executado gera uma linha a mais que começa com '=>'
+		esse é o retorno da funçao chamada anterioremnte.
+		+ Issos sempre eh mostrado
+		+ Qunado uma funçao nao reotrna nada, entao, vai mostrar nil
+			que significa nul para o Ruby
+
+
+
+
+	[1.5. Hello World]
+
+--> function : puts(string)
+	+ Imprimie uma String
+
+--> Usamos Sublime Text no curso
+
+--> Para executar no cmd, ou no cmd-ruby, temos que eta na pasta do arquivo a ser
+	executadao e executar:
+		> ruby 'file_name'.rb
+
+	[1.6. Tipos Básicos]
+
+--> inteiros e floats que usam ponto para separar a casa decimal do 
+
+--> Em Ruby tudo é uma class, pra saber de que classe estamos usadno, verificamos
+	com o comando .class para o dado.
+	Ex no IRB:
+		+ 3.class 			==> Interger
+		+ 4.5.class 		==> Float
+		+ '3' + '1' 		==> '31'
+		+ 'tata tata'.class ==> String
+		+ true				==> true
+		+ true.class		==> TrueClass
+	
+--> Em Ruby, nao há caractere, tudo é String, podemos usar tanto aspas simples 
+	quanto aspas duplas, tanto para 1 ou n caracters
+
+--> Em ruby '+' soma e concatena Strings
+
+--> Para declarar Varaiveis basta fazer por exemplo:
+	v2 = 45		==> v2.class ==> Integer
+	v4 = true	==> v3
+	v3 = 'fafa'	==>
+
+-->	Tipos Básicos no Ruby:
+	Inteiro		String
+	Real		Bollean
+
+	[1.7. IO padarao]
+
+--> Saida Padrao : puts
+	Ex: puts "HelloWorld"
+
+--> function : gets
+	+ Coleta algo que eu digitei do teclado
+	EXEMPLO:
+		v1 = gets
+	+ Concatenaçao : + ex: puts 'nome : ' + v1
+
+--> gets no irb
+	+ No interepretador, se eu der um gets e ecrever algo, e apertar enter ele
+		vai mostrar que nao string tem um \n
+	+ Esse \n eh de new_line quando voce dar um ENTER
+
+--> function : var_string << 'string
+	+ Toda vez que usamos + estamos gerando uma nova string, e isso pe ruim
+	+ para so apenas concatenarmos algo a outra string usamos '<<'
+	EXMEPLO: IRB
+	>	a = 'karma'
+	>	a << ' akabane'
+	> 	puts a
+	>>	'karma akabane
+
+--> function : 'any_string_var'.chomp
+	+ Com o chomp, agente tira o \n do final da string
+	+ IRB:
+		EX1:> v1 = gets.chomp
+		EX2:> v1 = gets
+		      v1.chomp
+
+--> function 'any_string-var'.inspect
+	+ Serve para ver o que tem reaplemnte na String
+	+ Por padrao, o \n nao eh visto quando vo ce mexe fora do IRB, por isos,
+		quando agente lia pelo codigo nao apareceia o '\n'
+	+ Para fazer ele aparecer, basta usar o inpsect e o '\n' aparecera
+		pois, quando digitamos e demos o enter, ele entrou tambem	
+	+ Entao, para pegarmos dados sem esse 'n' colocamos:
+		gets.chomp
+	EX:
+		v1 = gets.chomp
+		puts "O seu nome eh: " + v1.inspect
+
+	
+	[1.8. Comentarios]
+
+--> Uma linha: # (Sustenido)
+
+--> Multiplas linhas
+	=begin 
+		# Código
+	=end
+
+	[1.9. String e interporlação de varaiveis : #{}]
+
+--> Para juntar Strings, podemos usar o '+', mas isso nao é bom porque ele gera
+	um novo objeto. A melhor forma é atravez de interpolaçao
+
+--> Aspas Duplas permitem a interpolaçao de String dentro dela ou mesmo codigo ruby
+	+ A interpolaçao é feita atravez de #{code}
+	+ WARNING! Muitas vezes a IDE acusa que voce esta usando aspas duplas
+		mas nao esta fazendo nenhum interpolaçao nela. Entao
+		de preferencia so use-a quando for fazer interpolação, nao 
+		a use padrao como em Java
+
+	EX: COM Interpolaçap
+		puts  "A soma de 1 + 9 eh : #{1 + 9}"
+		print "A soma de 1 + 9 eh : 10"
+	EX: Sem interpolaçao
+		puts  "A soma de 1 + 9 eh : #{1 + 9}"
+		print  "A soma de 1 + 9 eh : #{1 + 9}"
+
+	[1.10. Cast]
+
+--> O gets so lê string do teclado
+
+--> Podemos ler com gets e depois converter para os outros tipos
+
+--> function : .to_i / .to_f / .to_s
+	+ Esses sao os cast do ruby para : int/float/string
+	+ Quando o usuario digita um numero e voce converte ele para 
+		int/float, some o \n dele
+
+--> Exemplo : Para pegar um numero do teclado tenho que fazer
+	puts "Digite sua idade: "
+	EXEMPLO:
+		v1 = gets.chomp
+		v2 = v1.to_i + 1
+		puts "Sua idade ano que vem sera: #{v2}"
+
+	[1.11. Operadores Aritimeticos]
+
+--> + , -, /, %, **
+
+--> Operadore Relacionais	
+	==	>	>=
+	!=	<	<=	
+
+--> Spaceship (O mesmo do php)
+	+ Pense como uma avaliador do 1arg em relaçao ao 2 arg
+	+ -1 (O arg1 é menor que o arqg2)
+	+ 0  (O arg1 é igual ao arg2)
+	+ +1 (O arg1 é maior que o arg2)
+
+--> Operador de Atriuiçao
+	+ Do modo susual que conhecemos
+	=	*=	**=
+	+=	/=
+	-=	%=
+
+--> WARNING! : Nâo existe ++ nem -- tanto pos/pre, NAO EXISTE
+
+	[1.12. Estrutura de Condição]
+
+--> ATTENTION! Rubismo: Em Ruby, tudo é true, as unicas coisas que nao sao true sao
+	false e nil(null). assim, se passarmos uma var null dentro do if
+	ele nao executara.
+
+--> WARNING! todo if tem um end no fim, se aparece elsif ou else, estes nao tem
+	end. Ou seja. O end final é o end do if, e os outros nao tem
+	
+--> if ... else ...end
+	+ Difrente dos outros, nao tem chavez, mas tem que ter en pra finalizar
+
+	EXEMPLO:
+	puts "Digite um numero:"
+	v1 = gets.chomp.to_i
+	if (v1 > 10) 
+		puts "O valor digitado eh maior que 10, eh : #{v1}"
+		puts "something\n\n"
+	elsif v1 == 5
+		puts "eh 5 :)"
+	else
+		puts "O valor digita eh menor que 10 :< : #{v1}"
+	end
+
+--> WARNING! O bloco do if fecha com end no mesmo espaçamneto que o ef
+
+--> WARNING! O else if é : (RUBY) elsif
+
+--> Como pyhon, so usa identaçao, pois, o que separa o if do codigo a ser lido sao:
+	+ then depois da condiçao : usado para legibilidade
+	+ newline ( igual ao python)
+	+ semicolum (nao sei aonde coloca, mas separa
+	
+	[1.13 Unless - A menos que]
+
+--> Unless é a negaçao do if, ou seja, ele executa o codigo se a sua condicional
+	for false, eh o mesmo que fazer > if !condi then
+	
+--> WARNING! Se usar Unless, nao podera usar elsif
+	
+	EXEMPLO:
+	unless x>=2
+	   puts "x is less than 2"
+	 else
+	   puts "x is greater than 2"
+	end
+
+	EXEMPLO: Tratando com nil
+a = nil
+if(!a)
+	puts 'a eh nullo'	#imprime mesmo
+end
+unless (a)
+	puts 'sim a eh nullo memso'	#imprime mesmo
+end
+
+	[1.14. case .. when]
+
+--> Estrutura do case em Ruby:
+	+ Ele avalia a variavel com os valores das condiçoes usadno ===
+	+ Usado quando nos saemos os possiveis valores a serem lido
+	+ Ele nao tem break
+	
+	SINTAXE:
+	case (variavel) [then]
+		when [cond]
+			#code
+		when [cond1],[cond2],...,[condn]
+			#code
+		else
+			#code_final_default
+	end
+
+	[1.15. Operadores Logicos]
+
+--> As mesmas usuais do C / JAVA
+	e   ==> and / &&
+	ou  ==> or  / ||
+	nao ==> !   / not
+	
+	[1.16. Estruturas de Repetiçao]
+
+--> WHILE : executa enquanto uma condiçao for verdadeira
+	
+	SINTAXE:
+	# testa enquanto for verdadeiras
+	while (condition) [then]
+		#code
+	end
+	
+	EXEMPLO:
+	i = 1
+	while (i <= 50)
+		puts "rafael"
+		i += 1
+	end	
+
+--> UNTIL: Executa enquanto a condiçao estier falsa
+	+ mesma sintaxe dowhile, terminando com end
+	+ sai quando a condiçao for true
+	EXEMPLO : Testa até esta falso
+	j = 5
+	until (j > 50) 
+		puts "prinf"
+		j += 1
+	end
+
+	[1.17 . Array]
+
+--> link : https://docs.ruby-lang.org/en/2.0.0/Array.html
+	+ tem todas as funçoes pra maniuplar array
+
+--> Inicializar um array. Podemo usar
+	var = Array.new
+	var = Arrat.new(20) #Array com limite
+
+--> function : var_array.size / var_array.lenght
+	+ retornanm o tamanho do array, um num inteiro
+	
+--> O array em Ruby é feito dinâmicamente
+
+--> Inicializaçao:
+	v = []
+	v.push(algo_a_ser_inserido)
+	v.delete(procurar esse elemneto e deletar do array
+	puts v[1] ==> pega o segundo elemento
+
+--> function : array.include?(arg) : return boolena
+	+ Verifica se o array em ou nao um elemento
+		retona false se nao tiver, true se o tiver
+
+
+	[1.18. Hash - Dicionario]
+
+--> Semelhante ao Vretor, so que conseguimaos escolher os nosso indeices em vez de
+	simplismente ser numero inteiro
+	+ eh a 'key' ==> 'value
+
+--> DECLARANDO COM AS CHAVES
+
+	EXEMPLO:
+	h = { "a" => "123", "b" => "456"}
+	puts "#{h.class}"
+	puts "elemento de index a do hash : #{h["a"]}"
+
+	[1.19. Simbolos]
+
+--> Rubismo : para inicializar um simbolo usadmos dois ponto ':', com isso
+	podemos fazre por exemplo:
+		var = :symbol1
+	e o simbolo :symbol1 ja vai ser instanciado, alocado, e atribuido ao var
+
+--> Vantagem : 
+	+ Economiza memoria, melhor do que criar Strings toda hora
+	
+--> function : any_object.object_id
+	+ Obtem o id na memoria de um objeto
+
+--> Por que usar Simbolos:  Pois para uma String cada nova construção instancia um 
+	novo objeto em memória, mesmo tendo o mesmo conteúdo
+	EXEMPLO:
+	>> "category".object_id
+	=> 2953810
+
+	>> "category".object_id
+	=> 2951340
+	
+	Aqui instanciamos 2 strings com o mesmo conteúdo. Cada objeto em memória
+	tem um ID único de forma que cada string acima usa um pedaço separado de 
+	memória e tem IDs separados. Agora imagine que os mesmos strings acima 
+	apareçam centenas de vezes em diferentes lugares pelo seu projeto. 
+	Definitivamente estamos usando mais memória do que necessário.
+
+--> Simbolos eh qualquer string precedida de ':'
+	+ Sao uma especie de String Estatica que nao muda na memoeria
+	+ Usamos quando queremos idetificar , nao vamos mudala
+	+ Podemos usar simbolos para ser as chavez dos hashe
+
+--> Ruby garante que não importa onde apareça em seu programa, um símbolo 
+	particular terá sempre o mesmo valor.
+
+--> Um símbolo é o objeto Ruby mais básico que você pode criar. Ele é apenas um 
+	nome e um ID interno. Símbolos são úteis porque um dado nome de símbolo se
+	refere ao mesmo objeto através de um programa Ruby. Símbolos são mais 
+	eficientes que strings. Duas strings com o mesmo conteúdo são dois objetos 
+	diferentes, mas para qualquer nome existe apenas um objeto Symbol. Isso 
+	pode economizar tempo e memória.
+
+--> QUANDO USAR STRING OU SIMBOLO
+	Se o conteúdo (a sequência de caracteres) do objeto é importante, use uma 		
+	string.Se a identidade do objeto é importante, use um símbolo.
+
+--> Exemplo de uso: Simbolo x String
+	sabe_ruby = :sim				sabe_ruby = 'sim'
+	if sabe_ruby == :sim				if sabe_ruby == 'sim'
+	   puts 'Voce eh um rubista' 			puts 'Voce eh um rubista'
+	else								else
+	   puts 'Aprenda Ruby'					puts Aprenda Ruby'
+	end									end
+
+--> Os dois codigos funcionam da mesma forma, porem Aqui, nessa situaçao, o uso de 
+	simbolo é mais eficiente, por que, quando voce chama 'sim', voce esta a
+	todo momento criando um objeto que ficara armazendo em locais distintos
+	da memoria, enquanto quem nos simbolos, os valores referenciados por :sim
+	sao para somnete um único local, ele é inicializaro uma única vez
+
+--> Tranforma String <==> Simbolo
+	puts "string".to_sym.class # Symbol
+	puts :symbol.to_s.class    # String
+
+	[1.20. Iterador each]
+
+--> each : significa cada, a ideia é, dado uma coleção, voce quer passar em cada
+	um dos elementos e fazer alguma cosia
+	EXEMPLO:
+	a = [10,20,30,40]
+	# passe em 'cada' um dele, atribuia a var elemento e imprima-o
+	a.each{ |element| puts element}
+	#out put
+	#10
+	#20
+	#30
+	#40
+
+--> Se tivermos mais de uma linha, usamos 'do'
+	EXEMPLO:
+	a.each do|element| 
+		puts element*2
+		puts element*3
+	end
+
+	[1.21. Operadores de Intevalo - ..,...]
+
+--> Sao os operadores [...] ou [..], eles servem para andar de um numero até outro
+	e eles geram um objeto do tipo > Range
+	+ Servem para criar array smais rapido
+	Ex:
+	a = (1...9)
+	puts a.class ==> Range
+	puts a	     ==> (1..9)
+
+--> Para manipular bem osobjetos Rnage, basta tratalos com uma colemçao, asism
+	usamos muito o each sobre ele
+	EXEMPLO: Usando 'do' / Usando uma unica linha
+	a = (1..2)		b = (1...3)
+	a.each do |x|	b.each { |x| puts x; puts "x #{x}"}
+		puts x
+	end
+
+--> WARNING : Diferentaça de .. para ...
+	+ ..  = vai até o ultimo numero			|| (1..4)  = (1,2,3,4)
+	+ ... = vai até um numero antes do fim  || (1...4) = (1,2,3)
+	+ Pode-se perceber que o ... combina com a logica de index dos arrays
+
+--> Funciona com char tambem e com outras coisas:
+	('a'..'d')    #==> 'a', 'b', 'c', 'd'
+
+	[1.22. Repetir fixamente com times]
+
+--> Rubismo : x.times, serve pra determina a quantidade de vezes que vai executar 		
+	um  codigo, é um meotod de um número inteiro
+	+ Podemos tambem pegar o valor da contagem atravez de |num|
+	+ Semelahnte ao each, sendo que começa a contagem de 0, pode-se usar do
+
+	EXEMPLO:
+	# Imprimi 5 vezse "hao"
+	5.times{puts "hao"}
+
+	# Executa 3 vezes - podemos pegar o valor do num de vez em num
+	3.times{|num| puts "#{num} - hao"}
+
+	# em uma mesma linha podemos separa por ; n instruçoes
+	4.times{|z| puts 1; puts "#{z}"}
+
+	#Podemos usa a logica do do, ou seja, igual ao each
+		WARNING! : l começa de 0 a n-1, assim 2.times = 0,1,2
+	2.times do |l|
+		puts "#{l} + 1" 
+		puts "#{l} + 2"
+		puts "#{l} + 3"
+	end
+	
+---------------------------------------------------------------------------------
+
+	{[ Moudlo 2 - Orientaçao a objetos]}
+
+	[2.01. Paradadigma OO e sua História]
+
+--> Paradigma : a regra de percepçao observaçao e abstraçao
+	
+--> Quando Surgiu: Começou a exertir mesmo na Lingugame SmallTak, e, apartir dela
+	que começou a se popularizar.
+
+--> Alan Kay : "Como seria um Software que funciona-se como um ser vivo"
+	+ Inventor da lignugaem SmallTalk e pai do OO, recebeu um premito turing
+		em 203 e arquitetura as GUI
+	+ Ele imaginou algo biologiaco, uma celula interagiria com outras
+		atravez de envio de mensagesn para realizar um objetivo
+	+ Assim, cada celula seria autonoma e elas se interagiriam entre si
+
+--> Atravez da analogia bioligca, desenvolveu...:
+	+ Os objetos realizam tarefas atrazes da requisisçoa de serviços a
+		outros objetos
+	+ Qualuqer coisa é um objeto
+	+ Cada objeto pertencem a uma class, e uma classe agrupa n objetos
+		e os descreve
+	+ Classes sao organizadas em hierarquias
+
+--> Pilares do OO
+	1. Abstraçao
+		+ Imaginar uma representaçao do mundo rela para uma abstrata,dando
+			lhe atributos e metodos em OO
+	2. Encapsulamento
+		+ esconder propriedade para obter segurança
+		+ é so mostrara aquilo que intereça para uso
+	3. Herança
+		+ permite reuso de código
+		+ herda outras classe, mixins
+	4. Polimorfismo
+		+ capacidade de se referenciar a um objetos de varias formas 
+			diferentes
+		+ overriding, duckTyping(metodo com mesma assinatura)
+
+	[2.02. Classes]
+
+--> Clasee: é uma forma para se criar objetos
+	+ Atravez da sua definiçao, determina-se quais serao os
+		atributos e métodos de qualquer objeto dessa classe
+
+--> Podemos especificar entidade fisicas, coneituais  e do sfotware
+	
+	[2.03. Encapsulamento]
+
+--> Escodnder os dados dentro do objeto, isso pruduz
+	+ a visao interna (como o objeto faz)
+	+ visao externa   (o que o objeto faz)
+	+ Pode-se pensar numa maquina de refrigretenae, eu sei q se eu colocar uma
+		moeda, saiu refri, mas nao sei como ela funciona por dentro
+	+ Serve para nao pertmitir que se acesse os dados deiretamnte
+		Exemplo: sem o setter, posso pegar a aclsse e fazar obje.x = 70
+		fora da classe de qualquer jeito
+	
+--> modificadores de acesso
+	+ public	sinal (+) --> quem ta de forama pode acessar
+	+ private 	sinal (-) --> so a prorpria classe o acessa
+	+ protected	sinal (#) --> ela propria e suas filhas podem acessar
+
+	[2.04. Objeto]
+
+--> Classes sao templates de objetos, os objetos sao instanciado, ele existem
+
+--> Objetos sao instancias de uma classe
+	+ ele armazena dados nos atributos e reagi a mensagens
+	+ todo objeto pertence a uma classe e possui seus dados instanciados
+	+ os atributos do objeto sao mutáveis
+
+--> A criaçao de um objeto consiste em sua intanciaçao,e objetos de mesma classe
+	compartilha mesma caracteristicas com atributos inetrnos diferentes
+
+	[2.05. Definindo classe me ruby]
+
+--> A definir o nome de uma classe, seu nomecoemça com Letra aisucula, e ,
+	caso o nome seja composto, usamos CamelCase.
+	SINTAXE:
+	class [Nome-Maiusculo]
+
+	end
+
+--> instanciar uma classe: metodo new da classe
+	obj1 = Classe.new
+
+--> no irb podsso importa uma calsse fazendo
+	require_relative 'nome_do_arquivo_'
+
+--> Alem de definir uma classe nm arquivo, voce pode digitar outra coisas depois de
+	fechar as chavez da def de calasses
+
+	[2.06. Metodos]
+
+--> Utilizamos a keyword com o seu nome, nao eh obrigatorio parentesis
+	SINTAXE
+	def [name_method]
+		# code
+	end
+
+--> metodos em ruby sao Snake_case, se o método tiver nome composto, usamos
+	underline para separar nomes compostos
+		Ex: metodo que fa Isso ==> metodo_que_faz_isso
+
+--> RETURN : usamos a keyword return, mas, tambem funciona sem ele
+	+ A ultima linha do método é o return em geral, por isso nao presisa 
+		por obrigaçao ter um return
+
+	EXEMPLO:
+
+	class Pessoa
+
+		# Caso nao tiver paramentro, coloca um por default
+		def gritar (texto = "grrrrrr")
+			puts "#{texto}"
+		end
+		
+		def agradecer
+			puts "Acompany On!"
+		end
+
+	end
+	#################
+	# EM Ruby, uma calsse pode ficar junto com código
+	obj1 = Pessoa.new
+	obj1.agradecer
+	obj1.gritar
+	obj1.gritar("Pitou")
+
+	[2.07. Atributos]
+
+--> Variavel de instancia  (@)
+	+ é uma variavel comun do java, de instancia, que todos os objetos o terao
+	EXEMPLO:
+	class Pearson
+		@name
+	end
+
+--> Modificadores de Acesso
+	public, private e protected
+	+ Sao palavras reservasdas, podem ser usados nos attr quanto em metodos
+		ou em atributos,
+	+ quando nao deixamos saua definiçao, entao é public
+
+	[2.08. Getter e Setters e Rubismo]
+
+--> EM geral atributos sao privados (-) Por isso, presisamos de getterss e setters
+	(como no java) para acessalos.
+
+--> Há 3 forma de fazer getters e setter 
+	+ 1. Semelhante ao Java
+	+ 2. Padrao do Ruby
+	+ 3. Rubismo attr
+
+1. Semelhante a Java
+
+# Modo de Getter e Setter Em  Java
+
+class Pearson1
+	@name
+
+	def set_name(name)
+		@name = name
+	end
+
+	def get_name()
+		return  @name
+	end
+
+	def get2_name
+		@name
+	end
+end
+	
+2. Getter e Setter do jeto ruby
+	+ Obs: sua chmada fica diferente tambem, fica quase como se nao
+		houve-se modificador de acesso
+	+ Set : object.var = 'value'
+	+ Get : var1 = object.var
+
+class Person2
+	@name
+
+	#getter
+	def name
+		@name
+	end
+
+	#setter
+	def name=(name)
+		@name = name
+	end
+	
+end
+
+	Chamada
+
+person = Person.new		# inicializar
+person.name = 'Dennis'	# Setter
+puts person.name 		# Getter
+
+3. Rubismo : attr_acessor
+	+ Cria a var de instancia e ja injeta o setter e getter do jeito ruby
+	+ É muito estrnaho mesmo, mas, FAZ O MESMO QUE O CASO 2
+	Tipos de ATTR:
+	+ Usa-se simbolos para instancaria avariaveis
+	+ 1. attr_acessor : cria get e set pra uma var
+	+ 2. aatr_writer  : cria so o setter para a variavel
+	+ 3. attr_reader  : cria so o getter para a variavel
+	+ Por conta disso, nao os outros attr nao criam os setter/getters
+		entao, nao teria como chamlos pra fazer setter/getters, 
+		MAS ELE NÂO MUDA O MOFICICADOR DE ACESSO (I GUESS)
+	Curiosidade WARNING!
+		+ Apesar de o setter ser 'var=' na sua chamada, podemeos sim
+			chamr como obj1.var = "name"
+		  Ou seja, podemo dar esse espaço que vai funcionar do jetio que
+		  queremos
+
+	Exemplo:
+		# Rubismo : Getter e Setter
+		class Pearson3
+			attr_accessor :name
+		end
+
+	Exemplo1.1: Como acessar
+		var1 = Pearson.new
+		var1.name = "silver"
+		puts var1.name
+
+	Exemplo2: Prova que cria os metodos
+		module Mod
+		  attr_accessor(:one, :two)
+		end
+		Mod.instance_methods.sort   #=> [:one, :one=, :two, :two=]
+
+--> Rubismo : Syntax Sugar. A capacidade de fazer com que esecute o 'obj.atr=' 			colocando um espaço como 'obj.atr = ' se ch é a sintaxe sugar
+
+	[2.09. Construtores]
+
+--> Construtores permitem inicialiar o objeto de varias forma diferetnes ou
+	de uma forma padrao
+
+--> function : eh o método inicialize
+	+ podemos passar ou nao var por paramentros
+	+ mesmo usndo attr, podemos clocar de forma normalmente
+
+	[modificadores de acesso]
+	private e protected e public, sendo que, se nao explicitamos, é public
+
+	[2.10. Rand]
+
+	var = Rand.new
+	var.rand(5) #retorno de 0 a 5
+	var.rand(1..9) #retorno de 1 a 9
+
+	[2.11. Herança ]
+
+--> Basta usar '<' entre a class : ClassFilha < ClassPai
+	+ Funciona da mesma forma que agente espera com Java
+	
+	[2.12 . Overriding Methosd - Sobrescrever(por hrenaça)]
+
+--> Quando uma clase filha tem mesmo nome da do pai, e, tem o emsmso método,
+	com mesma assinatura mas com corpo diferetnte
+
+--> Basta overridigg o metodo da classe pai com mesma assintatura,  mas
+	com o corpo diferente
+
+
+	[2.12. metodo super]
+
+--> function : super
+	+ serve pra chamar o método com mesmo nome de onde foi invokado na 		
+	superclasse, por isso nao preisa falar qual metodo pois
+		ele sabera que é o método de mesmo nome de onde foi chamado
+	+ pode ser usadao pelo Inictializer
+
+EXEMPLO:
+	class Conta
+	  attr_reader :numero, :saldo
+
+	  def initialize(numero, saldo = 0)
+		@numero = numero
+		@saldo = saldo
+	  end
+	end
+
+	class ContaEspecial < Conta
+	  attr_reader :limite_especial
+
+	  #@Override
+	  def initialize(numero, saldo, limite_especial)
+		super(numero, saldo) # tem q especifica 2 args do pai
+		@limite_especial = limite_especial
+	  end
+	end
+
+	[2.13. self]
+
+--> self : eh o .this do Java
+	+ eh a propria calsse no contexto do momento, 
+	+ Todo método é aplicado dentro de uma classe. O self retorna esse objeto
+		que é o ccontexto da chmada de um método
+
+	[2.14. Metodos de : Instancia : Classe]
+
+--> Metodos estaticos : 
+	+ Sao os static do Java
+	+ Em Ruby, para delcarr uma metodo com de clase, colocamos "self." 
+		precedido do nome da funçao
+	SINTAXE:
+		self.function_name ... #code .. end
+
+	EXEMPLO:
+	class Teste
+		# metodo de instancia : So executa sobre um objeto instanciado
+		def ola
+			return "ola"
+		end
+
+		# metodo estatico, de classe : Nao presisa instanciar nenhum objeto
+		def self.hello
+			return "Hello"
+		end
+
+	end
+
+	######################
+
+	#print metodo instancia
+	obj = Teste.new
+	puts obj.ola
+
+	#print metodo de clase
+	puts Teste.hello
+
+	[2.15. Constante]
+
+--> Constante : Para delcara-la tenho que por ela com TODAS! as letras MAIUSCULAS
+
+EXEMPLO:
+	# Constante sao declaradas 
+	# com todas as letra maiusculas 
+	PI = 3.14
+	pi = 3.14
+
+	pi = 2
+	puts pi		#print 3.14
+	PI =  3
+	puts PI		#print ERRO!
+
+	[2.16. Classes com Constantes]
+
+--> Se voce tem uma constante em uma clase, ela pode ser acessada a partir do 
+	operador "::" entre o o 'class_name'::'Constante
+
+--> Rubismo : Contantes sao staticas por padrão, acessadas por > Class::CTE
+
+	EXEMPLO:
+	class Teste
+		PI = 3.14
+	end
+
+	###############
+	puts = Teste:PI
+
+	[2.17. Módulos]
+
+--> Rubismo ; Módulos : Sâo uma alternativa ao uso de classe, sendo que nao sao
+	intsnciadaos. Bom para criar constantes e funções.
+	+ Agem como namspace, permitidno que voce defina métodos cujo
+		nome nao colidi com aqueles usados no programa
+	+ Com módulo, voc pode conpartilhar funcionalidades com outras classes
+--> Módulo em Ruby é similiar a classe, pois, armazena métodos, constantes e outras
+	definiçoes de métodos e clasess
+
+--> Voce nao podem criar objetos a partir de modulo (nem instancialoa) e módulos
+	nao sâo extendidios
+
+--> Módulos sâo bons para armazaenar constantes em um lugar só alem de métodos
+
+--> function : require 'file_name[.rb]'
+	+ Procura arquivo nas libs do ruby
+
+--> function : require_relative 'ruby_file'
+	+ ´Procura por arquvio dentro da pasta em que está
+	+ RELATIVO a onde esse arquivo esta
+
+--> function : include 'module_file'
+	+ o 'include' é usado para módulos, nao o usamos para classe
+
+	EXEMPLO:
+
+module Pagamento
+	PI = 3.14
+
+	def pagar(bandeira, num, valor)
+		puts "Pagando com cartao #{bandeira} #{num} o valor de R$ #{valor}"
+	end
+
+	class Visa
+		def pagando
+			return "pagando"
+		end
+	end
+
+end
+
+	EXEMPLO: DE ALGO USANDO ESSE MODULO
+	require_relative 'pagamento'
+	include Pagamento 		# incluir o modulo pagamento
+	puts PI					# works with Constants
+	varriavel = Visa.new 	# works iwth class
+	puts "Digite a Bandeira do Caratao"
+	var = gets.chomp
+	puts "Digite o num do cartao"
+	n = gets.chomp
+	puts "Digite o valor da compra"
+	v = gets.chomp.to_i
+
+	#work with methods
+	Pagamento.pagar(var,n,v)
+	puts "\n\n"
+	pagar(var,n,v)
+
+	[2.18 - Mixins ,Herança Multilpla em Ruby]
+
+--> Herança Múltipla : Não é possível fazer em ruby, quando quisermos fazer isso
+	podemos utilizar MIXINS que envolve módulos.
+	+ Consiste em criar modulos, fazer com que uma classe o inporte e entao
+		usalo nas classes
+
+EXEMPLO: MODULO 1 E 2
+
+	module A			|module B
+		def a1			|	def b1
+			puts 'a1	|		puts 'b1'
+		end				|	end
+		def a2			|	def a2
+			puts 'a2'	|		puts 'b2'
+		end				|	end
+	end					|end
+#########################
+#Arquivo que vai juntar esse dois modilos mais algo adicional
+	require_relative "01-ex"
+	require_relative "02-exe"
+
+class Exemplo
+	include A
+	include B
+	def ex1
+		puts 'exe'
+	end
+
+end
+#################
+
+#main
+require_relative "03-ex"
+
+x = Exemplo.new
+
+x.a1
+x.a2
+	
+x.b1
+x.b2
+
+x.ex1
+	
+	[2.19. Polimsofirmso e DuckTitpyng]
+
+--> Polimorfismo :
+	+ É o overriding que agente já fez, alem disso tem 
+	+ Como os paramnetos nao sao especificamdos, temo o DuckType, que é
+		a questao de interface em Java. Se eu tenho uma var que guarda
+		um tipo interface, qualquer coisa atribuida a ele que implemente
+		essa interface, será respeitado
+	+ Assim, desde que tenha a mesma assinatura, métodos de classe diferetens 		
+		sao tratados de mesma forma
+	+ Duck Type : polimorfismo atravez de métodos com mesma assinatura
+	
+	EXEMPLO:
+
+	class Pato
+		def quack!
+			"Quack! Quakc! Hapiness"
+		end
+	end
+
+	class PatoDoente
+		def quack!
+			"Wueeeeeeeck"
+		end
+	end
+
+	class Pessoa
+		def aperta_o_pato(pato)
+			pato.quack!
+		end
+	end
+
+	##########################
+
+	p1 = Pato.new
+	p2. PatoDoente.new
+
+	pessoa = Pessoa.new
+	Pessoa.aperta_o_pato(p1)	# Qucack Quack
+	Pessoa.aperta_o_pato(p2)	# Wueeeeeeeeek
+
+--------------------------------------------------------------------------------
+
+	{[3. Extras ]}
+
+	[3.1. Reabrir classes - Monkey Path]
+
+--> Reabrir/Redefinir uma classe
+	+ É redeclarar uma classe ou métodos proprios dela do RUBY
+	+ Exmeplo: podemos @override size
+	+ Consiste em eu adcionar mais métodos padroes para uma classe já
+		pré definida do Ruby.
+	+ WARNING! "Grandes poderes requrem grandes responsabilidades"
+	+ Deixei todos os seus monky_path num lugar so e
+		dentro de módulos
+	+ É recomendado ver com mais detrlhes depois monkeypath
+	
+	EXEMPLO:
+	class String
+		def falar(palavra = "oi")
+			"Falando ... #{oi}"
+		end
+	end
+	
+	EXEMPLO:
+	module CoreExtensions
+	  module DateTime
+		module BusinessDays
+		  def weekday?
+			!sunday? && !saturday?
+		  end
+		end
+	  end
+	end
+
+	[3.2. split <--> parsing de Strings]
+
+--> function : string.split
+	+ Separa um texto em espaços por space por default
+	+ A partir de uma string, separa em um array de string
+	EXEMPLO:
+		> "ao 123 fagag".split
+		> ["ao", "123","fagag]
+
+--> Delimitar um novo separador
+	+ A partir de uma entrada por um char como param
+	
+	EXEMPLO: Separa letra por letra
+		Ex: "jackson".split('')
+		=> ["j", "a", "c", "k"..]
+	
+	EXEMPLO: separar por '/'
+		Ex: "dd/mm/yyyy".split('/')
+		=> [dd, mm, yyyy]
+
+	[3.3. Gems]
+
+--> Rubismo : RubyGem é o gereciador de pacotes do Ruby, as gems
+	+ Sao análogos aos jars do java
+	
+--> Gems : são as biblioteca reutilizaveis do ruby que sao disponibilizdas na net 		
+	+ São gratuitas, Pra quase tudo que se possa imaginar existe uma gem e todos 
+	  ficao hospedadas no github
+
+--> site RubyGem: https://rubygems.org/
+	+ site deu uma gen de jackson ==> https://rubygems.org/gems/cpf_utils
+
+--> EXEMPLO: pra baixar uma gem
+	<cmd> gem install cpf_utils
+	
+--> EXEMPLO: Desintalar uma gem
+	<cmd> gem unistal cpf_utils[nome_da_gem]
+
+--> Como usar as gems no projeto (Eh necesario carregar as biblioteca)
+	require "cpf_utils
+		+ É require por que procura na lib do Ruby
+
+--> Local em que ficam as Gems:
+	C:\Ruby24\lib\ruby\gems\2.4.0
+
+	[3.4. Bundler]
+
+--> Rubismo : Bundler 
+	+ Bundelr : Gerencia quais as gems que voce presisa no projeto
+	+ Nada mais é do que semelhante ao maven, serve para indicar quais 
+		dependecnias ou quais as gems que um projeto necessita para rodar
+		e instalalas se o ruby da maquina nao as tiver
+	+ Uma Gem é uma dependencia de um projeto, entao, ela tem que etá dentro
+		da máquina para funcionar
+
+--> Gemfile.lock : ele especifica todas as gems obtidas para aquele Gemfile e sua 
+	respectiva versão baixada. O Gemfile.lock é uma boa alternativa para 	congelar as versões das gems a serem utilizadas, uma vez que ao rodarmos o 
+	comando bundle sobre a presença de um Gemfile.lock, as versões presentes 
+	nesse arquivo serão utilizadas para especificar as gems a serem baixadas.
+	
+--> Instalar bunndler
+	<cmd> gem install bundler
+
+--> Como usar:
+	+ crie um arquvi com nome : Gemfile [sem extensao mesmo]
+	+ nele coloque as gems
+
+	EXEMPLO:
+	[Gemfile]
+	source 'https://rubygems.org'
+	gem 'lerolero_generator'
+	gem 'cpf_utils'
+
+Excutando bundler
+	+ Basta executar o comando no cmd : bundle que ele vai procurar o arquivo
+		Gemfile nessa pasta, ve de onde pegar 'source, as dependencias e 			
+		intslaar elas. No fim gera um log : Gemfile.lock, ele é importante
+		e tambem eh mando pro git
+	+ link : http://bundler.io/
+	
+	[3.5. Arquivos]
+
+--> File : classe responsavel pra trabalhar com os arquivos
+		
+--> Exemplo : Criar/Escreve um arquivo
+	+ Usamos o open apra abrir, se o arquivo nao existir, ele cria um novo
+	+ Se existir vai sobreescrever do zero
+	
+	EXEMPLO: Write File
+	File.open('test.txt','w') do |arq|
+		arq.puts "jackson pirata"
+	end
+
+	EXEMPLO: Read File
+	File.open('test.txt', 'r') do |arq|
+		while line = arq.gets
+			puts line
+		end
+	end
+
+	[3.6. ARGV - Vetor de Entradas externas]
+
+--> ARGV : Argument Vector
+	+ Qunado voce chama pelo cmd, voce pode passar mais argumentos. 
+		EXEMPLO: ["tttt","iiii","ooo"]
+		<cmd> ruby file01.rb tttt iiii oooo
+	+ Os argumetnos passados ficam na constante ARGVque é um vetor	
+	+ É a constante ARGV, que pode ser acessada e é um vetor
+
+	EXEMPLO:
+		input
+	<cmd> ruby 01.file test.txt
+	# ARGV - Argument Vector, vetor de entrada das coisas
+	# EH o que voce passa de fora da aplicação
+	if (ARGV.size > 0)
+		puts ARGV.size
+		puts ARGV[0]
+		File.open(ARGV[0], 'r') do |arq|
+			while line = arq.gets
+				puts line
+			end
+		end
+	else
+		puts "Tem que passar um nome de arq.txt"
+	end
+	
+	[3.7. Dicas e melhorando o jogo]
+
+--> nome dos arquivo rb sao SneakCse
+
+--> nos projetos, as classe ficam na pasta chamada lib e tem um app.rb que é 
+	o arquivo princiapl que o chama, algo como o main
+
+--> function : sleep [int]
+	+ dar uma pausa por n segundos
+
+--> function : print "string"
+	+ ele imprime e nao vai pra linha de baixo, nao da newline \n
+
+--> function . array.sample
+	+ pega um elemento qualquer do vetor
+
+	[3.8 Executar comandos do SO no ruby]
+
+--> O ruby pode rodar comandos desde que sejam na linha do terminal
+
+--> O ruby podera executar qualquer comando que esteja no cmd/shell do SO
+	+ Eu que estou usando windows, entao, posso executar os comandos do cmd
+		basta usar system ('command')
+
+	EXEMPLO:
+		system('cls') # limpa a tela
+
+	[3.9. ASCII Art]
+
+--> Desenhar coisa atravez das letras
+
+--> Basta procurar ASCCI Generator no google, eh fazer desenho com letras do ascii
+
+--> Uma forma eficiente de abrir esse Ascci Art, seria colocar ele num arquivo
+	txt e entao abrilo e imprimilo, pois, vai imprimir linha por linha
+	melhor do que dar puts toda hora
+
+	EXEMPLO:
+	system('cls')
+	File.open('./img/abt.txt', 'r') do |arq|
+		while line = arq.gets
+			puts line
+		end
+	end
+
+	[3.10 Gems para o terminal]
+	
+--> Link: http://piotrmurach.github.io/tty/gems/
+	+ Sao gems para deixar o programa mais interetivo no prompt
+	+ Tem coisas como : Cursor, Tabelas, Tela de login
+		Baras de Carregando e muito mais
+	
+	[3.11. projeto final]
+
+--> Fazer Jogo da forca bem interatibvo no terminal
+	
+	[FINALIZADO - 20/11/2017]
+
+---------------------------------------------------------------------------------
+
+	{{Modulo 4 - Extras na Web]}
+
+--> function : string.capitalize 
+	<> return string
+	+ retorna a string com somente a primeira letra em Maiusuclo da String
+
+--> function : metodo!
+	+ O caracter '!' no fim do método serve pra envez de retornar algo da
+		do objeto, atribuir ao proprio objeto
+	EXEMPLO:
+	a = 'silver'
+	puts a # 'silver'
+	puts a.capitalize # 'Silver'
+	puts a		# 'silver, como dito antes, nao muda a varaivel
+	puts a.capitalize! # o metodo vai deixar a letra em maiusculo e imprimila
+	puts a		# 'Silver' Agora ela esta em maisuculo
+
+--> function : operator : ||=
+	+ Operador de atribuiçao que so atribui se a variavel for vazia (null) 
+	+ Assim da pra atribuir na sua criaçao, mas nao da pra atribui quando ela
+		nao for null
+	+ Serve pra nao presisa fazer um if caso ela ja estiver preenchida
+
+	EXEMPLO:
+	var1 = nil
+	var1 ||= 'x'
+	puts "var1 era null, agora eh #{var1}" #print x
+
+	var2 = 'not_change'
+	var2 ||= 'change'
+	puts "var2 = #{var2}" #print 'not_change
+
+	var3 ||= 'atribuiu com ||= na inicializacao'
+	puts "var3 = #{var3}" #print string
+
+--> function : object.send(:name_method)
+	+ Funçao que vai executar o metodo do simbolo passado por parametro
+	+ Com isso, podemos ter n funçoes e podemos transformar a chamada de uma
+	  funçao em uma variavel, e usala, pois temos
+		> string.to_sym
+		> :symb.to_s		
+	+ O método send recebe como argumento o nome do método a ser invocado, que 		pode ser um símbolo ou uma string. De acordo com a orientação a 
+		objetos é como se estivéssemos enviando a mensagem "fala" ao objeto 
+		pessoa.
+	
+	EXEMPLO:
+class Dog
+	def latir
+		puts 'au au'
+	end
+	def comer
+		puts 'estou comendo'
+	end
+	def lamber
+		puts 'gosto de carne'
+	end
+end
+
+#########
+dog = Dog.new
+dog.send(:latir) #executa o metodo latir passando simbolo
+dog.send('comer') #executa o metodo comer passando string
+
+
+--> function : operador : method(*param)
+	+ * é chamado de operador 'splat'
+	+ Em ruby, se um metodo recebe uma lista, podemos colocar tudo em um lugar
+		so, basta o metodo ter a seguinte sinxtaxe com *
+		def method(*name_param)
+	+ Assim, esse metodo covrete os parametro passados a ele como um array
+
+--> function : any_var.include?(arg) : boolean
+	+ Serve pra porcurar se uma var tem um elem em Array e String
+
+	EXEMPLO: STRING
+"hello".include? "lo"   #=> true
+"hello".include? "ol"   #=> false
+
+--> function : string.count (arg) :  int
+	+ Conta essa letra ou subpalavra na string e retorna a quantidade
+	Ex: a = 'hello world
+		a.count('l') # return 3
+
+--> function : array_of_string.join : string
+	+ transforma um array de string e uma string juntando tudo
+	EXEMPLO:
+	['a','b','c'].join ==> 'abc'
+
+--> function : string.downcase! : string
+	+ reatribui a variavel com taodas as letras minucualsa
+
+--> function : string.gsub!(arg1, arg2)
+	+ retorna subtitui a string arg1 em string pela arg2 em todas as 		ocorrencias
+
+--> function : array.unshift(arg)
+	+ coloca arg no inicio do array, o 'push' coloca no fim
+
+--> function : array.shif
+	+ ele retorna o primeiro eleemtno doarray e tira ele, como uma fila
+	

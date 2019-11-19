@@ -1,0 +1,6 @@
+CTRL + L : dar o coamndo clean e limpa a tela
+
+Linux/GitBash
++ Entrar numa pasta: `cd NomeDaPasta/`
++ Subir de diretorio: `cd ..`
++ Ver o que tem no diretorio: `dir`

@@ -1,0 +1,11 @@
+cat [file.extension]
+	+ Serve para abirir o conteudo do arquivo, semelhante ao Notepad++
+
+CTRL + C
+	+ kill o ultimo processo executado no cmd
+
+dir
+	+ lsita diretorios (arquivos e pastas de onde se esta
+
+cd nome_pasta
+	+ entra na pasta

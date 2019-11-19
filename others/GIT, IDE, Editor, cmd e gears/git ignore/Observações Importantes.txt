@@ -1,0 +1,9 @@
++ O git não aceita mandar pastas vazia para o remote. Para permitir, tem que ter
+	um arquivo. Então, voce pode criar um .gitignore para ser um arquivo 
+	para que permita mandar
+		$ touch name_file/.gitignore
+	So asism vai conseguir enviar uma pasta vazia
+
++ Geralmente da certo por que a nossa pasta tem arquivos, entao, colocando
+		name_folser/* 
+	

@@ -1,0 +1,63 @@
+# JNotebooks Tips
+
+## Atalhos do Windows
+
+Meus Atalhos Atuais:
+CTRL + ALT + 7: Abre ferramenta de Captura: Melhor que PrintSreen
+CTRL + ALT + 8: Abre Rnadom Notes
+CTRL + ALT + 9: Abre pasta da Neppo
+CTRL + ALT + 0: Abre LogNeppo
+
+Link: https://canaltech.com.br/hardware/125-uteis-teclas-de-atalho-para-o-windows/
+
+Link: Criar Atalhos para pastas : https://www.softdownload.com.br/como-criar-teclas-atalho-acessar-pastas-windows.html
+
+Windows Explorer (Folder Manage):
++ ALT + UP: Sai da pasta ( cd .. )
++ Criar nova Pasta: CTRL + SHIFT + N
+
+Minimizar todas as Janelas: Windows + M
+Acessar os itens fixados: Windows + 1|2|3....
+Navegar pelas abas abertas: Windows + T
+Abrir o Gerenciador de Tarefas: CTRL + SHIFT + ENTER
+Bloquaer o PC: WINDOWS + L
+
+## ShortCuts
+
+#### Principais
++ Executar Celula: SHIFT + ENTER
++ Executa e insere uma celular vazia embaixo: ALT + ENTER
+
+#### ShortCut com ESC (Click `ESC` ou mantenha apertado)
++ Inserir Celula Abaixo: ESC + B
++ Inserir Celula Acima: ESC + A
+
+#### Outros Atalhos
++ COmentar e Descomentar: ALT + C
+
+# NbExtentions
+
+## Comment/Uncomment Hotkey
+
+ALT + C: COMENTA E DESCOMENTA CÓDIGO, USANDO '#' e colocando um espacinho a mais
+
+## Notify
++ Serve para mandar uma notificaçâo no browser avisando que um processo acabou quando ele passar mais de x segundos. 
+ - Coloque o máximo, assim vai mandar a notificaçâoq uando algo grande tiver completado, com mais de 30 segunods
+
+## Snippets:
+ Está no arquivo snippets.json nesse link:
+
+C:\Anaconda3\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions\snippets
+
+## Pixie_Debbuger
+
+Para usar coloque no início:
+
+import pixiedust
+
+E na linha que for usálo:
+
+%%pixie_debugger
+
+link: https://medium.com/ibm-watson-data-lab/the-visual-python-debugger-for-jupyter-notebooks-youve-always-wanted-761713babc62
