@@ -470,10 +470,10 @@ console.log(texto.match(/[A-z]/g))
 
 Atalhos para um CONJUNTO de caracteres que sâo muito usados
 
-\d
-\w
-\s
-\b
+\d = digits
+\w = Words
+\s = spaces
+\b = bords
 
 ````javascript
 const texto = `1,2,3,a.b c!d?e\r	-
@@ -492,3 +492,295 @@ console.log(texto.match(/\S/g)) // não espaço [^ \t\n\r\f]
 ````
 
 ### Conjunto Negado
+
+basta por no início do conjunto o caractere circunflexo `^`
+
+````javascript
+const texto = '1,2,3,a.b c!d?e[f'
+
+console.log(texto.match(/\D/g))
+// Negação do conjunto de dígitos
+
+console.log(texto.match(/[^0-9]/g))
+// Negação dos dígitos, ou seja, pega tudo menos dígitos
+
+console.log(texto.match(/[^\d!\?\[\s,\.]/g))
+
+const texto2 = '1: !"#$%&\'()*+,-./ 2: :;<=>?@'
+
+console.log(texto2.match(/[^!-/:-@\s]/g))
+// Aqui temos 2 interevalso + \s
+/* Regex101
+!-/ a single character in the range between ! 
+  (index 33) and / (index 47) (case sensitive)
+:-@ a single character in the range between : 
+  (index 58) and @ (index 64) (case sensitive)
+\s matches any whitespace character (equal to
+  */
+````
+
+### Intervalos com Unicode
+
+Funciona da forma normal, mas, você precisa saber a ordem de cada caractere na tabela UNICODE e O INTERVALO de caracteres que vai pegar.
+
+````javascript
+const texto = 'áéíóú àèìòù âêîôû ç ãõ ü'
+console.log(texto.match(/[À-ü]/g))
+/* Resgata todos */
+/* Regex101
+À-ü a single character in the range between
+ À (index 192) and ü (index 252)
+*/
+````
+
+## 03. Quantificadores
+
+TABELA QUANTIFICADREOS DO PDF
+
+### Quantificador `?` - OPcional - (Zero ou Um)
+
+// ? -> zero ou um (opcional) para o caractere
+// a esquerda do símbolo '?'
+
+````javascript
+const texto1 = 'De longe eu avistei o fogo e uma pessoa gritando: FOGOOOOOO!'
+const texto2 = 'There is a big fog in NYC'
+
+// ? -> zero ou um (opcional) para o caractere
+// a esquerda do símbolo '?'
+const regex = /fogo?/gi
+// Estou dizendo para  buscar ...
+// 'fog' e com o 'o' opcional
+// Assim, busca 'fog' ou 'fogo'
+
+console.log(texto1.match(regex))
+/* [ 'fogo', 'FOGO' ] */
+console.log(texto2.match(regex))
+/* [ 'fog' ] */
+````
+
+### Quantificador `+` - (Um ou mais)
+
+Afeta o caractere da esquerda. Busca Um ou mais a ocorrÊncia de um caractere.
+
+Se usado em um grupo, vai buscar o máximo que der desse grupo.
+
+````javascript
+const texto1 = 'De longe eu avistei o fogo e uma pessoa gritando: FOGOOOOOO!'
+const texto2 = 'There is a big fog in NYC'
+
+// + -> um ou mais
+const regex = /fogo+/gi
+// Significa: buscar 'fog' seguido de uma sequência de 
+// um 'o' ou mais 'o's
+// afeta o caractere a esquerda
+
+console.log(texto1.match(regex))
+/* [ 'fogo', 'FOGOOOOOO' ] */
+// buscou 'FOG' seguido de vários 'O's
+
+console.log(texto2.match(regex))
+/* null */
+// Não buscou 'fog' pois ele busca no mínimo uma ocorrência
+
+const texto3 = 'Os números: 0123456789.'
+
+console.log(texto3.match(/[0-9]/g))
+/* [ '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ] */
+
+console.log(texto3.match(/[0-9]+/g))
+/* [ '0123456789' ] */
+// Buscou a partir da primeira ocorrência de um número o restante
+````
+
+### Quantificador `*` - (Zero ou Mais)
+
+````javascript
+const texto1 = 'De longe eu avistei o fogo e uma pessoa gritando: FOGOOOOOO!'
+const texto2 = 'There is a big fog in NYC'
+
+// * -> zero ou mais
+const regex = /fogo*/gi
+// Busca 'fog', 'fogo' ou 'fogoooo...'
+
+console.log(texto1.match(regex))
+/* [ 'fogo', 'FOGOOOOOO' ] */
+console.log(texto2.match(regex))
+/* [ 'fog' ] */
+````
+
+### Quantificador `{n,m}` - 
+
+Conseguimos definir intervalos de várias formas.
+
+TABELA DE PDF
+
+
+````javascript
+const texto = 'O João recebeu 120 milhões apostando 6 9 21 23 45 46.'
+
+// para definir uma quantificador usa {}
+console.log(texto.match(/\d{1,2}/g))
+// Vai pegar dígitos de 1 à 2 caracteres
+/* [ '12', '0', '6', '9', '21', '23', '45', '46' ] */
+
+console.log(texto.match(/[0-9]{2}/g))
+// Vai pegar os dígitos de dois caracteres
+/* [ '12', '21', '23', '45', '46' ] */
+
+console.log(texto.match(/\d{1,}/g))
+// Vai pegar os dígitos que tenham no ínimo 1 caractere
+/* [ '120', '6', '9', '21', '23', '45', '46' ] */
+
+console.log(texto.match(/\w{7}/g))
+// Vai buscar uma sequencia letras/número que tenha tamanho 7 (sem espaços)
+/* [ 'recebeu', 'apostan' ] */
+
+console.log(texto.match(/[\wõã]{7,}/g))
+// Pega sequencia de letras que tenham no mínimo 7 letras (sem espaços)
+/* [ 'recebeu', 'milhões', 'apostando' ] */
+
+
+// no futuro ......
+
+console.log(texto.match(/\b\d{1,2}\b/g))
+/* [ '6', '9', '21', '23', '45', '46' ] */
+// Não pega '120' por causa da borda
+
+console.log(texto.match(/\b[\wõ]{7}\b/g))
+/* [ 'recebeu', 'milhões' ] */
+// Nâo vai pegar 'apostan' por causa da borda
+````
+
+### Quantificadorores Gulosos e Nâo Gulosos (lazy)
+
+A forma gulsosa é a *default*, mas, dependendo da situação pdeo ser necessário ser *lazy*.
+
+Para por como *lazy*, coloca-se o `?` na frente do quantificador.
+
+Exemplo: /fogo+/ (default) ==> /fogo+?/ (lazy)
+
+````javascript
+const texto = '<div>Conteudo 01</div><div>Conteudo 02</div>'
+
+// quantificadores SÃO gulosos (greedy) por padrão ...
+
+// estou buscando ==>  '<div>' seguido de qualquer coisa (1 ou Mais) e depois '</div>'
+// Perceba que: a busca termina na ÚLTIMA 'div'. Mas e se eu quise-se que termina-se na primeira ?????????
+// Para isso existe o modo lazy, que vai retonar um match quando encontrar a primeira 'div' de fechamento
+// Dessa forma pega cada conjunto de DIV da forma que queremos, se nâo pega a primeira div até o fechamento da última DIV
+
+console.log(texto.match(/<div>.+<\/div>/g))
+console.log(texto.match(/<div>.*<\/div>/g))
+console.log(texto.match(/<div>.{0,100}<\/div>/g))
+/* TODOS RETORNAM : [ '<div>Conteudo 01</div><div>Conteudo 02</div>' ] */
+
+// quantificadores NÃO gulosos (lazy)...
+
+console.log(texto.match(/<div>.+?<\/div>/g))
+console.log(texto.match(/<div>.*?<\/div>/g))
+console.log(texto.match(/<div>.{0,100}?<\/div>/g))
+/* TODOS RETORNAM : [ '<div>Conteudo 01</div>', '<div>Conteudo 02</div>' ] */
+````
+
+## 04. Grupos
+
+Definidos a partir de parêntesis
+
+### Criando Gripos
+
+````javascript
+const texto1 = 'O José Simão é muito engraçado... hehehehehehe'
+
+// Grupos sâo feitos comparantesis '()'.
+// Emcima de um grupo, eu posso aplicar quantificadores: 
+// ? (Zero-Um), + (Um-Mais), *(Zero-Mais), {}(n á m)
+console.log(texto1.match(/(he)+/g))
+/* [ 'hehehehehehe' ] */
+const texto2 = 'http://www.site.info www.escola.ninja.br google.com.ag'
+
+console.log(texto2.match(/(http:\/\/)?(www\.)?\w+\.\w{2,}(\.\w{2})?/g))
+// Pode ter ou não 'http://' seguido de
+// Pode ter ou nâo 'www.' seguido de
+// Um conjunto de palavaras seguido de '.' seguido de 
+// 2 ou mais letras seguido de
+// '.' e dois ou mais letras opcionais
+/* [ 'http://www.site.info', 'www.escola.ninja.br', 'google.com.ag' ]*/
+````
+### Retrovisor
+
+````javascript
+const texto1 = '<b>Destaque</b><strong>Forte</strong><div>Conteudo</div>'
+
+console.log(texto1.match(/<(\w+)>/g))
+/* [ '<b>', '<strong>', '<div>' ] */
+
+// Retrovisor é uma forma de voce pegar a referencincia de um grupo
+// A ideia é: Quando se captura um grupo, poder usar essse valor posteriormente no regex
+
+// Usando retrovisor é o \1
+console.log(texto1.match(/<(\w+)>.*<\/\1>/g))
+/* [ '<b>Destaque</b>', '<strong>Forte</strong>', '<div>Conteudo</div>' ] */
+
+const texto2 = 'Lentamente é mente muito lenta.'
+
+// Sem retrovisor
+console.log(texto2.match(/(lenta)(mente)/gi))
+/* [ 'Lentamente' ] */
+
+// Posso usar dois retrovisores, já que há dois grupos
+// \2 será o "mente" e \1 é "lenta"
+console.log(texto2.match(/(lenta)(mente).*\2/gi))
+/* [ 'Lentamente é mente' ] */
+
+console.log(texto2.match(/(lenta)(mente).*\2.*\1\./gi))
+/* [ 'Lentamente é mente muito lenta.' ]  */
+
+// Existe uma forma de não guardar o valor d eum grupo, com "?:"
+
+console.log(texto2.match(/(?:lenta)(mente).*\1/gi)) // ?: não guarda
+// O retrovisor 1 '\1' nâo é mais 'lenta' é na verdade "mente"
+/* [ 'Lentamente é mente' ] */
+
+console.log(texto2.match(/(lenta)(mente)?/gi))
+/// pega 'lenta' quanto 'lentamente'
+/* [ 'Lentamente', 'lenta' ] */
+
+// Posso usar o retrovisor como parâmetro de um 'replace'
+console.log(texto2.replace(/(lenta)(mente)/gi, 'ABC $ DEF')) 
+// No caso, substituiu 'lenta' por 'mente' o segndo retrovisor
+/* mente é mente muito lenta. */ 
+
+// JAVASCRIPT SUPORTAR ATÉ PELO MENOS 12 RETROVISORES
+// para saber mais, tem que pesquisar/testar
+const texto3 = 'abcdefghijkll'
+console.log(texto3.match(/(a)(b)(c)(d)(e)(f)(g)(h)(i)(j)(k)(l)\12/g))
+/* [ 'abcdefghijkll' ] */
+````
+
+###
+
+````javascript
+
+````
+
+###
+
+````javascript
+
+````
+
+###
+
+````javascript
+
+````
+
+###
+
+````javascript
+
+````
+
+
+
