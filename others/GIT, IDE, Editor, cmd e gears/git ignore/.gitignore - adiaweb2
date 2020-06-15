@@ -1,5 +1,0 @@
-/vendor/
-/logs/*
-!/logs/README.md
-/cache
-/frontend/node_modules

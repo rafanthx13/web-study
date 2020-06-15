@@ -1,9 +1,0 @@
-CTRL+D
-	Serve para selecionar camppos simultaneamentes
-
-CTRL + SHIFT + V
-	Abre o plugin preview, que permite ver o resultado do HTML+CSS ou MD
-	(De preferencia abra uma nova tab para poder ver os dois simultaneamente)
-
-CTRL + /
-	+ Cria área de comentario ou comentar um trecho de código

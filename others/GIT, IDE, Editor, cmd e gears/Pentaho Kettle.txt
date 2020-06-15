@@ -1,4 +1,0 @@
-# Dicas do Pentaho
-
-## epoch ==> data
-+ epoch tem 13 digitos, tive problema que  a API vinha 10, entao, tinha que multiplicar por 1000 para poder dar certo.
