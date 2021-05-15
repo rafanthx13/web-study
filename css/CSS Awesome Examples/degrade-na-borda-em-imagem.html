@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Degrade na Borda - CSS</title>
+	<link rel="stylesheet" href="">
+	<style>
+		body{
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			padding: 0;
+			align-items: center;
+			font-family: Arial, Helvetica, sans-serif;
+			color: gray;
+		}
+		
+		img {
+			height: 120px;
+			width: 120px;
+		}
+
+		p {
+			text-align: center;
+		}
+
+		.img-object-cover {
+			object-fit: cover;
+		}
+
+		.img-instagram{
+			object-fit: cover;
+			background-image: linear-gradient(200deg, #c52e92, #fa9f4e);
+			background-origin: border-box;
+			background-clip: padding-box, border-box;
+			padding: 3px;
+			border-radius: 50vh;
+		}
+
+		.fill {
+		  object-fit: fill;
+		}
+
+		.contain {
+		  object-fit: contain;
+		}
+
+		.cover {
+		  object-fit: cover;
+		}
+
+		.none {
+		  object-fit: none;
+		}
+
+		.scale-down {
+		  object-fit: scale-down;
+		}
+
+	</style>
+</head>
+<body>
+	<h2>Exemplo de Degradê em Borda de Foto</h2>
+	<p>https://www.youtube.com/watch?v=FOAklI1sn8c</p>
+
+	
+		<span>Imagem sem object-fit (achata o rosto) se você tem que diminuir a imagem</span>
+		<img src="img/my_foto.jpg" alt="">	
+		<span>Imagem com object-fit</span>
+		<img class="img-object-cover" src="img/my_foto.jpg" alt="">
+		<span><b>Imagem com borda semelhante ao Instagram</b></span>
+		<img class="img-instagram" src="img/my_foto.jpg" alt="">
+	</div>
+	<p>
+		<strong>fill</strong>
+O conteúdo substituído é dimensionado para preencher a caixa de conteúdo do elemento: o tamanho concreto do objeto é a largura e a altura usadas do elemento.
+<br>
+<img class="fill" src="img/my_foto.jpg" alt="">
+
+<br>
+
+
+<strong>contain</strong>
+O conteúdo substituído é dimensionado para manter sua proporção enquanto se encaixa na caixa de conteúdo do elemento: seu tamanho de objeto concreto é resolvido como uma restrição de restrição em relação à largura e altura usadas do elemento.
+<br>
+
+<img class="contain" src="img/my_foto.jpg" alt="">
+
+<br>
+
+
+<strong>cover</strong>
+O conteúdo substituído é dimensionado para manter sua proporção e preencher toda a caixa de conteúdo do elemento: seu tamanho de objeto concreto é resolvido como uma restrição de capa contra a largura e a altura usadas do elemento.
+
+<br>
+
+<img class="cover" src="img/my_foto.jpg" alt="">
+
+<br>
+
+<strong>none</strong>
+O conteúdo substituído não é redimensionado para caber dentro da caixa de conteúdo do elemento: o tamanho do objeto concreto do objeto é determinado usando o algoritmo de tamanho padrão sem tamanho especificado e um tamanho de objeto padrão igual à largura e altura usadas do elemento substituído.
+<br>
+<img class="none" src="img/my_foto.jpg" alt="">
+
+<br>
+
+<strong>scale-down</strong>
+O conteúdo é dimensionado se none ou contain for especificado, o que resultaria em um tamanho menor de objeto concreto.
+<br>
+<img class="scale-down " src="img/my_foto.jpg" alt="">
+<br>
+	</p>
+	
+</body>
+</html>
